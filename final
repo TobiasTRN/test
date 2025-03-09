@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte de Visite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        button, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ajouter mon contact</h2>
+
+        <!-- Bouton pour ajouter le contact -->
+        <p>Appuyez sur le bouton ci-dessous pour ajouter mon contact :</p>
+        <button onclick="addContact()">📲 Ajouter mon Contact</button>
+
+        <div id="formContainer" class="hidden">
+            <h3>Partagez-moi vos coordonnées :</h3>
+            <form id="contactForm">
+                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="text" name="prenom" placeholder="Prénom" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="telephone" placeholder="Téléphone">
+                <input type="text" name="profession" placeholder="Profession">
+                <button type="submit">Envoyer</button>
+            </form>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        function addContact() {
+            // Créer un lien vCard qui ne télécharge pas le fichier mais l'ouvre directement
+            const vcfData = `BEGIN:VCARD
+VERSION:3.0
+FN:Tobias Terrien
+ORG:Ma Société
+TEL:+33612345678
+EMAIL:tobias@example.com
+END:VCARD`;
+
+            const blob = new Blob([vcfData], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "contact.vcf";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            // Afficher le formulaire après l'ajout du contact
+            document.getElementById("formContainer").classList.remove("hidden");
+        }
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            fetch("https://script.google.com/macros/s/TON_SCRIPT_ID/exec", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("message").innerText = "✅ Merci ! Vos informations ont été envoyées.";
+                event.target.reset();
+            })
+            .catch(error => {
+                document.getElementById("message").innerText = "❌ Une erreur est survenue. Réessayez.";
+            });
+        });
+    </script>
+</body>
+</html>
 
