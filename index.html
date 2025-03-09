@@ -28,6 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte de visite</title>
     <style>
+        /* Ton style CSS pour la page */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -62,9 +63,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Mon Contact</h2>
-        <p><a href="https://raw.githack.com/TON_UTILISATEUR/TON_REPO/main/moncontact.vcf">📥 Ajouter mon contact</a></p>
-
+        <!-- Suppression de "Mon Contact" et "Ajouter mon contact" -->
         <h3>Partagez-moi vos coordonnées :</h3>
         <form id="contactForm">
             <input type="text" name="nom" placeholder="Nom" required>
@@ -78,6 +77,7 @@
         <p id="message"></p>
     </div>
 
+    <!-- JavaScript pour envoyer les données vers Google Sheets -->
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
