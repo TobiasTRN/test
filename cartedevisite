@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte de visite</title>
+    <title>Ma Carte de Visite</title>
     <style>
         /* Ton style CSS pour la page */
         body {
@@ -50,7 +50,8 @@
 
         <!-- Ajouter mon contact -->
         <p>Ajoutez mon contact directement sur votre téléphone en cliquant sur le bouton ci-dessous :</p>
-        <a href="https://raw.githubusercontent.com/TobiasTRN/test/refs/heads/main/TERRIEN_Tobias%20(4).vcf">
+        <!-- Bouton pour télécharger le fichier VCF -->
+        <a href="https://raw.githubusercontent.com/TobiasTRN/test/refs/heads/main/TERRIEN_Tobias%20(4).vcf" download>
             <button>📥 Ajouter mon Contact</button>
         </a>
 
@@ -91,4 +92,3 @@
     </script>
 </body>
 </html>
-
