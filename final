@@ -65,7 +65,7 @@
     <script>
         function addContact() {
             // Lien vers ton fichier vCard hébergé sur GitHub
-            const vcfUrl = "https://raw.githubusercontent.com/TobiasTRN/test/refs/heads/main/TERRIEN_Tobias%20(4).vcf";
+            const vcfUrl = "https://urlr.me/hc3Hzk";
             
             // Créer un lien de téléchargement pour le fichier vCard
             const link = document.createElement('a');
