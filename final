@@ -60,7 +60,7 @@
         <p>Appuyez sur le bouton ci-dessous pour télécharger mon contact :</p>
 
         <!-- Nouveau lien pour télécharger manuellement le fichier .vcf -->
-        <a href="https://raw.githubusercontent.com/TobiasTRN/test/refs/heads/main/TERRIEN_Tobias%20(4).vcf" class="download-link" download="contact.vcf">Télécharger mon Contact 📲</a>
+        <a href="https://raw.githubusercontent.com/TobiasTRN/test/refs/heads/main/TERRIEN_Tobias%20(4).vcf" class="download-link" download="TERRIEN_Tobias (4).vcf">Télécharger mon Contact 📲</a>
 
         <div id="formContainer" class="hidden">
             <h3>Partagez-moi vos coordonnées :</h3>
