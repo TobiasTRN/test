@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte de visite</title>
+    <style>
+        /* Ton style CSS pour la page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        h3 {
+            color: #333;
+        }
+        p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ma Carte de Visite</h2>
+
+        <!-- Ajouter mon contact -->
+        <p>Ajoutez mon contact directement sur votre téléphone en cliquant sur le bouton ci-dessous :</p>
+        <a href="https://raw.githack.com/TON_UTILISATEUR/TON_REPO/main/moncontact.vcf" target="_blank">
+            <button>📥 Ajouter mon Contact</button>
+        </a>
+
+        <hr>
+
+        <!-- Formulaire pour récupérer les coordonnées de la personne -->
+        <h3>Partagez-moi vos coordonnées :</h3>
+        <form id="contactForm">
+            <input type="text" name="nom" placeholder="Nom" required>
+            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="telephone" placeholder="Téléphone">
+            <input type="text" name="profession" placeholder="Profession">
+            <button type="submit">Envoyer</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+
+    <!-- JavaScript pour envoyer les données vers Google Sheets -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            fetch("https://script.google.com/macros/s/TON_SCRIPT_ID/exec", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("message").innerText = "✅ Merci ! Vos informations ont été envoyées.";
+                event.target.reset();
+            })
+            .catch(error => {
+                document.getElementById("message").innerText = "❌ Une erreur est survenue. Réessayez.";
+            });
+        });
+    </script>
+</body>
+</html>
 
