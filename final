@@ -38,6 +38,18 @@
         .hidden {
             display: none;
         }
+        .download-link {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .download-link:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -45,8 +57,10 @@
         <h2>Ajouter mon contact</h2>
 
         <!-- Bouton pour ajouter le contact -->
-        <p>Appuyez sur le bouton ci-dessous pour ajouter mon contact :</p>
-        <button onclick="addContact()">📲 Ajouter mon Contact</button>
+        <p>Appuyez sur le bouton ci-dessous pour télécharger mon contact :</p>
+
+        <!-- Nouveau lien pour télécharger manuellement le fichier .vcf -->
+        <a href="https://raw.githubusercontent.com/TobiasTRN/test/refs/heads/main/TERRIEN_Tobias%20(4).vcf" class="download-link" download="contact.vcf">Télécharger mon Contact 📲</a>
 
         <div id="formContainer" class="hidden">
             <h3>Partagez-moi vos coordonnées :</h3>
@@ -63,26 +77,6 @@
     </div>
 
     <script>
-        function addContact() {
-            // Lien vers ton fichier vCard hébergé sur GitHub
-            const vcfUrl = "https://urlr.me/hc3Hzk";
-            
-            // Créer un lien de téléchargement pour le fichier vCard
-            const link = document.createElement('a');
-            link.href = vcfUrl; // Lien vers ton fichier .vcf
-            link.download = "contact.vcf";  // Nom du fichier vCard
-            document.body.appendChild(link);
-            
-            // Simuler un clic sur le lien pour télécharger le fichier
-            link.click();
-            
-            // Nettoyer le lien après l'avoir cliqué
-            document.body.removeChild(link);
-
-            // Afficher le formulaire après l'ajout du contact
-            document.getElementById("formContainer").classList.remove("hidden");
-        }
-
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
