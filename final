@@ -13370,7 +13370,7 @@ END:VCARD;
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            fetch("https://script.google.com/macros/s/TON_SCRIPT_ID/exec", {
+            fetch("https://script.google.com/u/0/home/projects/1HcHrrTxTud2UfgsI-jRRLFLl1aENT4IYvJY-oLfGpLw4IgaIkcHmH2R7/edit", {
                 method: "POST",
                 body: formData
             })
